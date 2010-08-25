@@ -13,3 +13,5 @@ module(..., fawkes.modinit.register_all);
 
 skillenv = require("skiller.skillenv")
 require("skiller.skillhsm")
+
+skillenv.use_skill("herb_skills.say")
