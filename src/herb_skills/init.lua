@@ -12,6 +12,9 @@ require("fawkes.modinit")
 module(..., fawkes.modinit.register_all);
 
 skillenv = require("skiller.skillenv")
+local action_skill = require("skiller.ros.action_skill")
 require("skiller.skillhsm")
 
-skillenv.use_skill("herb_skills.say")
+--skillenv.use_skill("herb_skills.say")
+action_skill.debug = true
+action_skill.use("herb_skills.say", "/talker", "talkerapplet/Say")
