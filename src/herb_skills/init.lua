@@ -9,10 +9,11 @@
 ----------------------------------------------------------------------------
 
 require("fawkes.modinit")
-module(..., fawkes.modinit.register_all);
+module(..., fawkes.modinit.register_all)
 
 skillenv = require("skiller.skillenv")
 local action_skill = require("skiller.ros.action_skill")
+local arm_skill = require("herb_skills.armskill")
 require("skiller.skillhsm")
 
 --skillenv.use_skill("herb_skills.say")
@@ -27,4 +28,9 @@ action_skill.use("herb_skills.rotate_relative", "/rails/rotate/relative", "Robot
 action_skill.use("herb_skills.drive_forward", "/rails/drive/forward", "RobotOnRails/Drive")
 action_skill.use("herb_skills.goto", "/rails/goto", "RobotOnRails/Goto")
 action_skill.use("herb_skills.stop_rails", "/rails/stop", "pr_msgs/Signal")
-
+arm_skill.use("herb_skills.grab", "grab", "manipulationapplet/Grab")
+arm_skill.use("herb_skills.noop", "none", "manipulationapplet/NoOp")
+arm_skill.use("herb_skills.pickup", "pickup", "manipulationapplet/Pickup")
+arm_skill.use("herb_skills.put", "put", "manipulationapplet/Put")
+arm_skill.use("herb_skills.handoff", "handoff", "manipulationapplet/HandOff")
+arm_skill.use("herb_skills.goinitial", "goinitial", "manipulationapplet/GoInitial")
