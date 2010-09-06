@@ -27,10 +27,15 @@ skillenv.skill_module(_M)
 
 -- FINAL and FAILED states are created implicitly by SkillHSM
 fsm:define_states{ export_to=_M,
-   {"LOCK_ENV",    SkillJumpState, skill=lockenv,             final_state="GRAB"},
-   {"GRAB",        SkillJumpState, skills={{grab}, {noop}},   final_state="PICKUP"},
-   {"PICKUP",      SkillJumpState, skills={{pickup}, {noop}}, final_state="RELEASE_ENV"},
-   {"RELEASE_ENV", SkillJumpState, skill=releaseenv,          final_state="FINAL"}
+   {"LOCK_ENV",    SkillJumpState, skill=lockenv,             final_state="GRAB",
+    failtrans_dotattr={labelrotate=-90}, fintrans_dotattr={labeloffsetx=20}},
+   {"GRAB",        SkillJumpState, skills={{grab}, {noop}},   final_state="PICKUP",
+    failtrans_dotattr={labelrotate=-90, labeloffsety=40, labeloffsetx=-5}, fintrans_dotattr={labeloffsetx=20, labeloffsety=-5}},
+   {"PICKUP",      SkillJumpState, skills={{pickup}, {noop}}, final_state="RELEASE_ENV",
+    failtrans_dotattr={labelrotate=-72, labeloffsety=60}, fintrans_dotattr={labeloffsetx=0, labeloffsety=-10}},
+   {"RELEASE_ENV", SkillJumpState, skill=releaseenv,          final_state="FINAL",
+    failtrans_dotattr={labelrotate=-22, labeloffsetx=-75, labeloffsety=13}, fintrans_dotattr={labelrotate=-22, labeloffsetx=-125, labeloffsety=55}},
+
 }
 
 function opposite_side(side)
