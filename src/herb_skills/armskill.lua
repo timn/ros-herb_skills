@@ -45,18 +45,18 @@ debug = skiller.ros.action_skill.debug
 local reserved= { left = false, right = false }
 
 local function is_free(side)
-   printf("Checking free[%s] = %s", side, tostring(reserved[side]))
+   --printf("Checking reserved[%s] = %s", side, tostring(reserved[side]))
    return not reserved[side]
 end
 
 local function reserve(side)
-   printf("Reserving %s", side)
+   print_debug("Reserving %s", side)
    assert(not reserved[side], "Arm already reserved")
    reserved[side] = true
 end
 
 local function free(side)
-   printf("Freeing %s", side)
+   print_debug("Freeing %s", side)
    reserved[side] = false
 end
 
@@ -167,8 +167,8 @@ function use(module_name, action_name, action_type)
 	 M.determine_object(self)
 	 self.fsm.vars.assume_noop = true
 	 reserve("left")
-	 self.fsm.vars[M.name .. ":" .. M[action_var_right].name] = self.fsm.vars
-	 self.fsm.vars[M.name .. ":" .. M["noop_left"].name] = {side = "left"}
+	 self.fsm.vars[self.name .. ":" .. M[action_var_right].name] = self.fsm.vars
+	 self.fsm.vars[self.name .. ":" .. M["noop_left"].name] = {side = "left"}
       end
 
    M.reset =
