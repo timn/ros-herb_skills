@@ -29,8 +29,6 @@ skillenv.skill_module(_M)
 
 -- FINAL and FAILED states are created implicitly by SkillHSM
 fsm:define_states{ export_to=_M,
-   {"GOINITIAL_LEFT",  SkillJumpState,final_state="GOINITIAL_RIGHT",
-    skills={{goinitial, {side="left"}}, {noop, {side="right"}}}},
-   {"GOINITIAL_RIGHT", SkillJumpState, final_state="FINAL",
-    skills={{goinitial, {side="right"}}, {noop, {side="left"}}}}
+   {"GOINITIAL_LEFT",  SkillJumpState, final_state="GOINITIAL_RIGHT", skills={{goinitial, {side="left"}}}},
+   {"GOINITIAL_RIGHT", SkillJumpState, final_state="FINAL", skills={{goinitial, {side="right"}}}}
 }
