@@ -13,6 +13,7 @@ module(..., fawkes.modinit.register_all)
 
 skillenv = require("skiller.skillenv")
 local action_skill = require("skiller.ros.action_skill")
+local service_skill = require("skiller.ros.service_skill")
 local arm_skill = require("herb_skills.armskill")
 require("skiller.skillhsm")
 
@@ -39,6 +40,13 @@ arm_skill.use("herb_skills.pickup", "pickup", "manipulationapplet/Pickup")
 arm_skill.use("herb_skills.put", "put", "manipulationapplet/Put")
 arm_skill.use("herb_skills.handoff", "handoff", "manipulationapplet/HandOff")
 arm_skill.use("herb_skills.goinitial", "goinitial", "manipulationapplet/GoInitial")
+
+-- Generic service skills
+service_skill.use("herb_skills.slide_load", "/rospresenter/load", "rospresenter/Load")
+service_skill.use("herb_skills.slide_next", "/rospresenter/page/next", "std_srvs/Empty")
+service_skill.use("herb_skills.slide_prev", "/rospresenter/page/prev", "std_srvs/Empty")
+service_skill.use("herb_skills.slide_goto", "/rospresenter/page/goto", "rospresenter/GotoPage")
+service_skill.use("herb_skills.slide_hide", "/rospresenter/hide", "std_srvs/Empty")
 
 -- Custom skills
 skillenv.use_skill("herb_skills.grab_object")
