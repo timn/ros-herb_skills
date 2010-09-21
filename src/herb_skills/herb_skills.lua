@@ -22,9 +22,9 @@ print("Initializing HERB skills")
 
 -- Generic action skills
 action_skill.use("herb_skills.say", "/talker", "talkerapplet/Say")
-action_skill.use("herb_skills.stop_arms", "/hwctrl/arms/stop", "pr_msgs/Signal")
-action_skill.use("herb_skills.stop_segway", "/hwctrl/segway/stop", "pr_msgs/Signal")
-action_skill.use("herb_skills.resume_segway", "/hwctrl/segway/resume", "pr_msgs/Signal")
+--action_skill.use("herb_skills.stop_arms", "/hwctrl/arms/stop", "pr_msgs/Signal")
+--action_skill.use("herb_skills.stop_segway", "/hwctrl/segway/stop", "pr_msgs/Signal")
+--action_skill.use("herb_skills.resume_segway", "/hwctrl/segway/resume", "pr_msgs/Signal")
 action_skill.use("herb_skills.turn_global", "/rails/rotate/global", "RobotOnRails/Rotate")
 action_skill.use("herb_skills.turn", "/rails/rotate/relative", "RobotOnRails/Rotate")
 action_skill.use("herb_skills.drive_forward", "/rails/drive/forward", "RobotOnRails/Drive")
@@ -49,6 +49,13 @@ service_skill.use("herb_skills.slide_next", "/rospresenter/page/next", "std_srvs
 service_skill.use("herb_skills.slide_prev", "/rospresenter/page/prev", "std_srvs/Empty")
 service_skill.use("herb_skills.slide_goto", "/rospresenter/page/goto", "rospresenter/GotoPage")
 service_skill.use("herb_skills.slide_hide", "/rospresenter/hide", "std_srvs/Empty")
+service_skill.use("herb_skills.hold_arm", "/hwctrl/arm/hold", "hwctrl/SideDependent")
+service_skill.use("herb_skills.relax_arm", "/hwctrl/arm/relax", "hwctrl/SideDependent")
+service_skill.use("herb_skills.open_hand", "/hwctrl/hand/open", "hwctrl/SideDependent")
+service_skill.use("herb_skills.reset_hand", "/hwctrl/hand/reset", "hwctrl/SideDependent")
+service_skill.use("herb_skills.stop_arms", "/hwctrl/arms/stop", "pr_msgs/Signal")
+service_skill.use("herb_skills.stop_segway", "/hwctrl/segway/stop", "pr_srvs/Empty")
+service_skill.use("herb_skills.resume_segway", "/hwctrl/segway/resume", "pr_srvs/Empty")
 
 -- Custom skills
 skillenv.use_skill("herb_skills.grab_object")
