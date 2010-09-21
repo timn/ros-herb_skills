@@ -39,6 +39,7 @@ arm_skill.use("herb_skills.noop", "none", "manipulationapplet/NoOp")
 arm_skill.use("herb_skills.pickup", "pickup", "manipulationapplet/Pickup")
 arm_skill.use("herb_skills.put", "put", "manipulationapplet/Put")
 arm_skill.use("herb_skills.handoff", "handoff", "manipulationapplet/HandOff")
+arm_skill.use("herb_skills.take", "take", "manipulationapplet/Take")
 arm_skill.use("herb_skills.goinitial", "goinitial", "manipulationapplet/GoInitial")
 arm_skill.use("herb_skills.weigh", "getobjectweight", "manipulationapplet/WeighObject")
 
