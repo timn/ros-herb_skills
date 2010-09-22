@@ -14,7 +14,7 @@ module(..., skillenv.module_init)
 -- Crucial skill information
 name            = "grab_object"
 fsm             = SkillHSM:new{name=name, start="LOCK_ENV"}
-depends_skills  = { "lockenv", "releaseenv", "grab", "pickup", "noop" }
+depends_skills  = { "lockenv", "releaseenv", "grab", "pickup", "noop", "open_hand" }
 depends_actions = nil
 
 documentation      = [==[Grab object skill.
@@ -27,9 +27,17 @@ skillenv.skill_module(_M)
 
 -- FINAL and FAILED states are created implicitly by SkillHSM
 fsm:define_states{ export_to=_M,
-   {"LOCK_ENV",    SkillJumpState, skill=lockenv, final_state="GRAB"},
-   {"GRAB",        SkillJumpState, skill=grab,   final_state="PICKUP", failure_state="FAIL_RELEASE"},
-   {"PICKUP",      SkillJumpState, skill=pickup, final_state="RELEASE_ENV", failure_state="FAIL_RELEASE"},
-   {"RELEASE_ENV", SkillJumpState, skill=releaseenv,  final_state="FINAL"},
-   {"FAIL_RELEASE", SkillJumpState, skill=releaseenv, final_state="FAILED"}
+   {"LOCK_ENV",     SkillJumpState, skill=lockenv, final_state="GRAB"},
+   {"GRAB",         SkillJumpState, skill=grab,   final_state="PICKUP", failure_state="GRAB_RETRY"},
+   {"PICKUP",       SkillJumpState, skill=pickup, final_state="RELEASE_ENV", failure_state="FAIL_RELEASE"},
+   {"RELEASE_ENV",  SkillJumpState, skill=releaseenv,  final_state="FINAL"},
+   {"FAIL_RELEASE", SkillJumpState, skill=releaseenv, final_state="FAILED"},
+   {"GRAB_RETRY",   SkillJumpState, skill=open_hand, final_state="GRAB"},
+   {"PICKUP_RETRY", SkillJumpState, skill=releaseenv, final_state="PICKUP"},
+}
+
+fsm:add_transitions{
+   -- Transitions to ensure we only retry once
+   {"GRAB_RETRY", "FAIL_RELEASE", "fsm:traced(self.name)", precond_only=true},
+   {"PICKUP_RETRY", "FAIL_RELEASE", "fsm:traced(self.name)", precond_only=true},
 }
