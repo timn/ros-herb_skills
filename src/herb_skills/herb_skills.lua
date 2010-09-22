@@ -53,9 +53,9 @@ service_skill.use("herb_skills.hold_arm", "/hwctrl/arm/hold", "hwctrl/SideDepend
 service_skill.use("herb_skills.relax_arm", "/hwctrl/arm/relax", "hwctrl/SideDependent")
 service_skill.use("herb_skills.open_hand", "/hwctrl/hand/open", "hwctrl/SideDependent")
 service_skill.use("herb_skills.reset_hand", "/hwctrl/hand/reset", "hwctrl/SideDependent")
-service_skill.use("herb_skills.stop_arms", "/hwctrl/arms/stop", "pr_msgs/Signal")
-service_skill.use("herb_skills.stop_segway", "/hwctrl/segway/stop", "pr_srvs/Empty")
-service_skill.use("herb_skills.resume_segway", "/hwctrl/segway/resume", "pr_srvs/Empty")
+service_skill.use("herb_skills.stop_arms", "/hwctrl/arms/stop", "std_srvs/Empty")
+service_skill.use("herb_skills.stop_segway", "/hwctrl/segway/stop", "std_srvs/Empty")
+service_skill.use("herb_skills.resume_segway", "/hwctrl/segway/resume", "std_srvs/Empty")
 
 -- Custom skills
 skillenv.use_skill("herb_skills.grab_object")
