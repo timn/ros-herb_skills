@@ -63,3 +63,5 @@ service_skill.use("herb_skills.resume_segway", "/hwctrl/segway/resume", "std_srv
 -- Custom skills
 skillenv.use_skill("herb_skills.grab_object")
 skillenv.use_skill("herb_skills.reset_arms")
+
+print_warn("Initialized HERB skills. Skiller can now be used.")
