@@ -28,10 +28,11 @@ skillenv.skill_module(_M)
 -- FINAL and FAILED states are created implicitly by SkillHSM
 fsm:define_states{ export_to=_M,
    {"LOCK_ENV",     SkillJumpState, skill=lockenv, final_state="GRAB"},
-   {"GRAB",         SkillJumpState, skill=grab,   final_state="PICKUP", failure_state="GRAB_RETRY"},
+   {"GRAB",         SkillJumpState, skill=grab,   final_state="PICKUP", failure_state="FAIL_RELEASE"},
    {"PICKUP",       SkillJumpState, skill=pickup, final_state="RELEASE_ENV", failure_state="FAIL_RELEASE"},
    {"RELEASE_ENV",  SkillJumpState, skill=releaseenv,  final_state="FINAL"},
-   {"FAIL_RELEASE", SkillJumpState, skill=releaseenv, final_state="FAILED"},
+   {"FAIL_RELEASE", SkillJumpState, skill=releaseenv, final_state="FAIL_GOINITIAL"},
+   {"FAIL_GOINITIAL", SkillJumpState, skill=releaseenv, final_state="FAILED"},
    {"GRAB_RETRY",   SkillJumpState, skill=open_hand, final_state="GRAB"},
    {"PICKUP_RETRY", SkillJumpState, skill=releaseenv, final_state="PICKUP"},
 }
