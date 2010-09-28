@@ -18,7 +18,7 @@ local arm_skill = require("herb_skills.armskill")
 require("skiller.skillhsm")
 
 print("Initializing HERB skills")
---action_skill.debug = true
+action_skill.debug = true
 
 -- Generic action skills
 action_skill.use("herb_skills.say", "/talker", "talkerapplet/Say")
@@ -42,7 +42,7 @@ arm_skill.use("herb_skills.pickup", "pickup", "manipulationapplet/Pickup")
 arm_skill.use("herb_skills.put", "put", "manipulationapplet/Put")
 arm_skill.use("herb_skills.handoff", "handoff", "manipulationapplet/HandOff")
 arm_skill.use("herb_skills.give", "give", "manipulationapplet/Give")
-arm_skill.use("herb_skills.take", "reachtake", "manipulationapplet/Take")
+arm_skill.use("herb_skills.take", "reachtake", "manipulationapplet/ReachTake")
 arm_skill.use("herb_skills.goinitial", "goinitial", "manipulationapplet/GoInitial")
 arm_skill.use("herb_skills.weigh", "getobjectweight", "manipulationapplet/WeighObject")
 
