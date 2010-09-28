@@ -39,12 +39,13 @@ action_skill.use("herb_skills.pose_fromto", "/posegraph/gofromto", "posegraphapp
 arm_skill.use("herb_skills.grab", "grab", "manipulationapplet/Grab")
 arm_skill.use("herb_skills.noop", "none", "manipulationapplet/NoOp")
 arm_skill.use("herb_skills.pickup", "pickup", "manipulationapplet/Pickup")
-arm_skill.use("herb_skills.put", "put", "manipulationapplet/Put")
+arm_skill.use("herb_skills.put_unlocked", "put", "manipulationapplet/Put")
 arm_skill.use("herb_skills.handoff", "handoff", "manipulationapplet/HandOff")
 arm_skill.use("herb_skills.give", "give", "manipulationapplet/Give")
 arm_skill.use("herb_skills.take", "reachtake", "manipulationapplet/ReachTake")
 arm_skill.use("herb_skills.goinitial", "goinitial", "manipulationapplet/GoInitial")
 arm_skill.use("herb_skills.weigh", "getobjectweight", "manipulationapplet/WeighObject")
+arm_skill.use("herb_skills.place_unlocked", "place", "manipulationapplet/Place")
 
 -- Generic service skills
 service_skill.use("herb_skills.slide_load", "/rospresenter/load", "rospresenter/Load")
@@ -63,5 +64,7 @@ service_skill.use("herb_skills.resume_segway", "/hwctrl/segway/resume", "std_srv
 -- Custom skills
 skillenv.use_skill("herb_skills.grab_object")
 skillenv.use_skill("herb_skills.reset_arms")
+skillenv.use_skill("herb_skills.place")
+skillenv.use_skill("herb_skills.put")
 
 print_warn("Initialized HERB skills. Skiller can now be used.")
