@@ -3,9 +3,10 @@
 --  grab_object.lua - Herb skill to grab and pickup an object
 --
 --  Created: Thu Sep  2 16:50:05 2010 (at Intel Research, Pittsburgh)
---  License: BSD
+--  License: BSD, cf. LICENSE file
 --  Copyright  2010  Tim Niemueller [www.niemueller.de]
---
+--             2010  Carnegie Mellon University
+--             2010  Intel Labs Pittsburgh
 ----------------------------------------------------------------------------
 
 -- Initialize module

@@ -3,9 +3,10 @@
 --  noop.lua - Herb noop skill
 --
 --  Created: Wed Sep 01 16:07:59 2010 (at Intel Research, Pittsburgh)
---  License: BSD
+--  License: BSD, cf. LICENSE file
 --  Copyright  2010  Tim Niemueller [www.niemueller.de]
---
+--             2010  Carnegie Mellon University
+--             2010  Intel Labs Pittsburgh
 ----------------------------------------------------------------------------
 
 -- *************************************************************************

@@ -3,9 +3,10 @@
 --  reset_arms.lua - Herb skill to reset both arms
 --
 --  Created: Thu Sep  2 18:09:42 2010 (at Intel Research, Pittsburgh)
---  License: BSD
+--  License: BSD, cf. LICENSE file
 --  Copyright  2010  Tim Niemueller [www.niemueller.de]
---
+--             2010  Carnegie Mellon University
+--             2010  Intel Labs Pittsburgh
 ----------------------------------------------------------------------------
 
 -- Initialize module
