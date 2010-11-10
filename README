@@ -1,0 +1,39 @@
+
+herb_skills: HERB-specific skill set
+====================================
+
+This package provides the set of skills initially available for HERB, the
+Home Exploring Robot Butler at Intel Labs Pittsburgh.
+
+Although the set of skills might not be immediately useful for other robots,
+because if addresses the specific HERB components, it might still serve as a
+useful example if you are new to the behavior engine.
+
+Some notes about the particular features demonstrated:
+ armskill.lua::
+  An auto-generator for a common class of skills, which order instruction of
+  different actions on the same entity, therefore resulting in a uniform
+  appearance of all such skills.
+ grab.lua and noop.lua::
+  Before implementing armskill.lua, the skill was implemented "by hand". This
+  file contains such a skill and serves as an example of a "regular" skill.
+ grab_object.lua::
+  This higher order skill employs several simpler skills to form a more
+  complex behavior. In particular in our environment during action execution
+  updates must be prevented to be added to the model. This is done by locking
+  it. Therefore this skill roughly implements the sequence of detect the
+  object, lock the environment, verify that the object has not been removed
+  in the time between seeing the object and locking the environment, grab the
+  object, pick it up, i.e. lift the arm into a safe carrying position, and
+  finally unlock the environment. Of course in case of an error the skill
+  diverts from that strict linear sequence.
+ place.lua and put.lua::
+  Higher order skills similar to grab_object, but for placing an object on
+  a surface or putting it into a bin.
+ init.lua::
+  Definition of the skill space, i.e. registering and triggering
+  auto-generation of all available skills.
+ say.lua::
+  Simple skill calling a particular action using actionlib, but where there
+  are not multiple skills of a similar pattern justifying an auto-generator.
+
