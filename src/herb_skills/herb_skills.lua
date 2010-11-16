@@ -49,11 +49,11 @@ arm_skill.use("herb_skills.weigh", "getobjectweight", "manipulationapplet/WeighO
 arm_skill.use("herb_skills.place_unlocked", "place", "manipulationapplet/Place")
 
 -- Generic service skills
-service_skill.use("herb_skills.slide_load", "/rospresenter/load", "rospresenter/Load")
-service_skill.use("herb_skills.slide_next", "/rospresenter/page/next", "std_srvs/Empty")
-service_skill.use("herb_skills.slide_prev", "/rospresenter/page/prev", "std_srvs/Empty")
-service_skill.use("herb_skills.slide_goto", "/rospresenter/page/goto", "rospresenter/GotoPage")
-service_skill.use("herb_skills.slide_hide", "/rospresenter/hide", "std_srvs/Empty")
+service_skill.use("herb_skills.slide_load", "/presenter/load", "presenter/Load")
+service_skill.use("herb_skills.slide_next", "/presenter/page/next", "std_srvs/Empty")
+service_skill.use("herb_skills.slide_prev", "/presenter/page/prev", "std_srvs/Empty")
+service_skill.use("herb_skills.slide_goto", "/presenter/page/goto", "presenter/GotoPage")
+service_skill.use("herb_skills.slide_hide", "/presenter/hide", "std_srvs/Empty")
 service_skill.use("herb_skills.hold_arm", "/hwctrl/arm/hold", "hwctrl/SideDependent")
 service_skill.use("herb_skills.relax_arm", "/hwctrl/arm/relax", "hwctrl/SideDependent")
 service_skill.use("herb_skills.open_hand", "/hwctrl/hand/open", "hwctrl/SideDependent")
