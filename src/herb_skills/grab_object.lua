@@ -18,7 +18,7 @@ fsm             = SkillHSM:new{name=name, start="DETECT_OBJECT"}
 depends_skills  = { "lockenv", "releaseenv", "grab", "pickup", "noop", "open_hand", "goinitial", "relax_arm" }
 depends_actions = nil
 depends_topics     = {
-   { v="objects",  name="/manipulation/obj_list",   type="manipulationapplet/ObjectActions", latching=true },
+   { v="objects",  name="/manipulation/obj_list",   type="newmanipapp/ObjectActions", latching=true },
 }
 
 
