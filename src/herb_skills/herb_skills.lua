@@ -37,6 +37,7 @@ action_skill.use("herb_skills.pose_goto", "/posegraph/goto", "posegraphapplet/Go
 action_skill.use("herb_skills.pose_fromto", "/posegraph/gofromto", "posegraphapplet/GoFromToPose")
 
 -- Generic arms skills
+arm_skill.use("herb_skills.take_at_tf", "take_at_tf", "newmanipapp/TakeAtTF")
 arm_skill.use("herb_skills.fthandoff", "fthandoff", "newmanipapp/FTHandOff")
 arm_skill.use("herb_skills.fttake", "fttake", "newmanipapp/FTTake")
 arm_skill.use("herb_skills.fttare", "fttare", "newmanipapp/FTTare")
