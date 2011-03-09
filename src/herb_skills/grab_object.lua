@@ -9,6 +9,8 @@
 --             2010  Intel Labs Pittsburgh
 ----------------------------------------------------------------------------
 
+local string = string
+
 -- Initialize module
 module(..., skillenv.module_init)
 
@@ -84,19 +86,38 @@ function DETECT_OBJECT:loop()
    if #objects.messages > 0 then
       local m = objects.messages[#objects.messages] -- only check most recent
       for i,o in ipairs(m.values.object_id) do
-         --print_debug("%s: comparing %s / %s / %s with %s", self.name, o,
-	--	     m.values.poss_act[i], m.values.side[i], self.fsm.vars.original_object_id)
-         if o:match(self.fsm.vars.original_object_id) and m.values.poss_act[i] == "grab" then
-            self.fsm.vars.side         = m.values.side[i]
-            self.fsm.vars.object_id    = o
-            self.fsm.vars.found_object = true
+         print_debug("%s: comparing %s / %s / %s with %s", self.name, o,
+		       m.values.poss_act[i], m.values.side[i], self.fsm.vars.original_object_id)
+		     local match = false
+		     for j,obj in ipairs(self.fsm.vars.original_object_id:split(",")) do
+		        if self.fsm.vars.side then
+		           if not (m.values.side[i] == self.fsm.vars.side) then
+		              break
+		           end
+		        end
+		        if o:match(obj) and m.values.poss_act[i] == "grab" then
+		           self.fsm.vars.side         = m.values.side[i]
+               self.fsm.vars.object_id    = o
+               self.fsm.vars.found_object = true
+		           match = true
+		           break
+		        end
+		     end
+         if (match == true) then
             break
          end
       end
       if not self.fsm.vars.found_object then
-         --print_error("not found in this loop")
-	 self.fsm.vars.object_disappeared = true
+         --print_error("Object not found in this loop.")
+         self.fsm.vars.object_disappeared = true
       end
    end
 end
 VERIFY_OBJECT.loop = DETECT_OBJECT.loop
+
+function string:split(sep)
+  local sep, fields = sep or ":", {}
+  local pattern = string.format("([^%s]+)", sep)
+  self:gsub(pattern, function(c) fields[#fields+1] = c end)
+  return fields
+end
