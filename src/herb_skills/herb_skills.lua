@@ -33,11 +33,12 @@ action_skill.use("herb_skills.goto", "/rails/goto", "RobotOnRails/Goto")
 action_skill.use("herb_skills.stop_rails", "/rails/stop", "pr_msgs/Signal")
 action_skill.use("herb_skills.lockenv", "/manipulation/env/lock", "pr_msgs/Signal")
 action_skill.use("herb_skills.releaseenv", "/manipulation/env/release", "pr_msgs/Signal")
+action_skill.use("herb_skills.stop_manipapp", "/manipulation/stop", "newmanipapp/Stop")
+action_skill.use("herb_skills.goinitial_both", "/manipulation/goinitial", "newmanipapp/GoInitial")
 action_skill.use("herb_skills.pose_goto", "/posegraph/goto", "posegraphapplet/GotoPose")
 action_skill.use("herb_skills.pose_fromto", "/posegraph/gofromto", "posegraphapplet/GoFromToPose")
 
 -- Generic arms skills
-arm_skill.use("herb_skills.stop_manipapp", "stop_manipapp", "newmanipapp/Stop")
 arm_skill.use("herb_skills.handover", "handover", "newmanipapp/Handover")
 arm_skill.use("herb_skills.take_at_tm", "take_at_tm", "newmanipapp/TakeAtTM")
 arm_skill.use("herb_skills.go_to_tm", "go_to_tm", "newmanipapp/GoToTM")
