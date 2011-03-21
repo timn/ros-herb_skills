@@ -55,7 +55,7 @@ fsm:add_transitions{
    {"DETECT_OBJECT", "FAILED", "vars.detect_tries and vars.detect_tries >= 5",
                                 desc="no object_id given", precond_only=true},
    {"DETECT_OBJECT", "LOCK_ENV", "vars.found_object"},
-   {"DETECT_OBJECT", "FAILED", timeout={20, error="object not visible"}},
+   {"DETECT_OBJECT", "FAILED", timeout={5, error="object not visible"}},
    {"VERIFY_OBJECT", "DETECT_RETRY", timeout=10},
    {"VERIFY_OBJECT", "DETECT_RETRY", "vars.object_disappeared"},
    {"VERIFY_OBJECT", "GRAB", "vars.found_object"},
@@ -85,30 +85,37 @@ end
 function DETECT_OBJECT:loop()
    if #objects.messages > 0 then
       local m = objects.messages[#objects.messages] -- only check most recent
+      local obj_str = nil
+      local match = false
       for i,o in ipairs(m.values.object_id) do
          print_debug("%s: comparing %s / %s / %s with %s", self.name, o,
 		       m.values.poss_act[i], m.values.side[i], self.fsm.vars.original_object_id)
-		     local match = false
-		     for j,obj in ipairs(self.fsm.vars.original_object_id:split(",")) do
-		        if self.fsm.vars.side then
-		           if not (m.values.side[i] == self.fsm.vars.side) then
-		              break
-		           end
-		        end
-		        if o:match(obj) and m.values.poss_act[i] == "grab" then
-		           self.fsm.vars.side         = m.values.side[i]
-               self.fsm.vars.object_id    = o
-               self.fsm.vars.found_object = true
-		           match = true
-		           break
-		        end
-		     end
-         if (match == true) then
-            break
+         for j,obj in ipairs(self.fsm.vars.original_object_id:split(",")) do
+            if self.fsm.vars.side then
+               print_debug("Filtering for %s side",self.fsm.vars.side)
+               if not (m.values.side[i] == self.fsm.vars.side) then
+                  break
+               end
+            end
+            if o:match(obj) and m.values.poss_act[i] == "grab" then
+               if obj_str == nil then
+                  obj_str = o
+               else 
+                  obj_str = obj_str .. " " .. o
+               end
+               if not self.fsm.vars.side then
+                  self.fsm.vars.side = m.values.side[i]
+               end
+               match = true
+            end
          end
       end
-      if not self.fsm.vars.found_object then
-         --print_error("Object not found in this loop.")
+      if (match == true) then
+         self.fsm.vars.object_id    = obj_str
+         self.fsm.vars.found_object = true
+         print_info("%s grab objects: %s.", self.fsm.vars.side, obj_str)
+      else
+         print_warn("No objects found on matching %s.", self.fsm.vars.original_object_id)
          self.fsm.vars.object_disappeared = true
       end
    end
