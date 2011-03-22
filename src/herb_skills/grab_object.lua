@@ -43,7 +43,7 @@ fsm:define_states{ export_to=_M,
    {"RELEASE_ENV",    SkillJumpState, skill=releaseenv,  final_state="FINAL"},
    {"FAIL_OPENHAND",  SkillJumpState, skill=open_hand, final_state="FAIL_GOINITIAL"},
    {"FAIL_GOINITIAL", SkillJumpState, skill=goinitial, final_state="FAIL_RELEASE", failure_state="FAIL_RELAX"},
-   {"FAIL_RELAX",     SkillJumpState, skill=relax_arm, final_state="FAIL_RELEASE"},
+   {"FAIL_RELAX",     JumpState}, --SkillJumpState, skill=relax_arm, final_state="FAIL_RELEASE"},
    {"FAIL_RELEASE",   SkillJumpState, skill=releaseenv, final_state="FAILED"},
    --{"GRAB_RETRY",     SkillJumpState, skill=open_hand, final_state="GRAB"},
    --{"PICKUP_RETRY",   SkillJumpState, skill=releaseenv, final_state="PICKUP"},
@@ -61,6 +61,7 @@ fsm:add_transitions{
    {"VERIFY_OBJECT", "GRAB", "vars.found_object"},
    --{"GRAB_RETRY", "FAIL_RELEASE", "fsm:traced(self.name)", precond_only=true},
    --{"PICKUP_RETRY", "FAIL_RELEASE", "fsm:traced(self.name)", precond_only=true},
+   {"FAIL_RELAX", "FAILED", "true"},
 }
 
 function DETECT_OBJECT:init()
