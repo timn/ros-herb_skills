@@ -42,7 +42,7 @@ action_skill.use("herb_skills.pose_fromto", "/posegraph/gofromto", "posegraphapp
 arm_skill.use("herb_skills.handover", "handover", "newmanipapp/Handover")
 arm_skill.use("herb_skills.take_at_tm", "take_at_tm", "newmanipapp/TakeAtTM")
 arm_skill.use("herb_skills.go_to_tm", "go_to_tm", "newmanipapp/GoToTM")
-arm_skill.use("herb_skills.fthandoff", "fthandoff", "newmanipapp/FTHandOff")
+arm_skill.use("herb_skills.ft_handoff", "ft_handoff", "newmanipapp/FTHandOff")
 arm_skill.use("herb_skills.fttake", "fttake", "newmanipapp/FTTake")
 arm_skill.use("herb_skills.fttare", "fttare", "newmanipapp/FTTare")
 arm_skill.use("herb_skills.give", "give", "newmanipapp/Give")
