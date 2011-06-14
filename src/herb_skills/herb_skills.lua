@@ -39,7 +39,9 @@ action_skill.use("herb_skills.pose_goto", "/posegraph/goto", "posegraphapplet/Go
 action_skill.use("herb_skills.pose_fromto", "/posegraph/gofromto", "posegraphapplet/GoFromToPose")
 
 -- Generic arms skills
-arm_skill.use("herb_skills.follow", "follow", "newmanipapp/Follow")
+arm_skill.use("herb_skills.follow_take", "follow_take", "newmanipapp/FollowTake")
+arm_skill.use("herb_skills.follow_give", "follow_give", "newmanipapp/FollowGive")
+arm_skill.use("herb_skills.follow_teleop", "follow_teleop", "newmanipapp/FollowTeleop")
 arm_skill.use("herb_skills.handover", "handover", "newmanipapp/Handover")
 arm_skill.use("herb_skills.take_at_tm", "take_at_tm", "newmanipapp/TakeAtTM")
 arm_skill.use("herb_skills.go_to_tm", "go_to_tm", "newmanipapp/GoToTM")
