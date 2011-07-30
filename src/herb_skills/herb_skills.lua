@@ -79,4 +79,4 @@ skillenv.use_skill("herb_skills.reset_arms")
 skillenv.use_skill("herb_skills.place")
 skillenv.use_skill("herb_skills.put")
 
-print_warn("Initialized HERB skills. Skiller can now be used.")
+print_debug("Initialized HERB skills. Skiller can now be used.")
